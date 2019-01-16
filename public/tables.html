@@ -35,14 +35,38 @@
 </head>
 <body>
 
+
+
         <div class="container">
 
         <div class="jumbotron">
                 <h1 class="display-4 center-txt"><i class="fas fa-fire"></i> Hot Restaurant</h1>
                 <hr class="my-4">
-                <h3 class="center-txt">We only have 5 tables! Book your seat before they all are gone!</h3>
-                <a class="btn btn-primary btn-lg center-btn" href="/tables" role="button"><i class="fa fa-list-alt"></i> View Tables</a>
+                <h3 class="center-txt">Current Reservations and Waiting List</h3>
                 <a class="btn btn-danger btn-lg center-btn" href="/reserve" role="button"><i class="far fa-credit-card"></i> Make Reservation</a>
+                <a class="btn btn-light btn-lg center-btn" href="/index" role="button"><i class="fas fa-home"></i>Home</a>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header">Current Reservations</h5>
+                        <!-- Reservation items go here -->
+                        <div class="card-body" id="reservations">
+                            <h3 class="card-text"><span class="badge badge-primary">1</span> | testing</h3>
+                            <h3 class="card-text"><span class="badge badge-primary">2</span> | blah...</h3>
+                        </div>
+                    </div>
+            
+                    <div class="card">
+                        <h5 class="card-header">Wait List</h5>
+                        <!-- Wait list items go here -->
+                        <div class="card-body" id="wait-list">
+                            
+                        <div id="reservations"> </div> 
+                        </div>
+                    </div>
+                </div>
             </div>
 
         <footer class="footer">
@@ -50,11 +74,47 @@
                 <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist"></a>API Wait List</a>
             </div>
         </footer>
+    </div>
 
-        </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
+</body>
+</html>
+
+
+<script>
+
+function clearTable() {
+    alert("Clearing...");
+
+    $.ajax({url: "/api/clear", method: "POST"}).then(function(){
+        $("#wait-list").empty();
+        $("#reservations").empty();
+    })
+}
+
+$("#clear").on("click", clearTable);
+
+function runWaitListQuery() {
+    $.ajax({url: "/api/waitlist", method: "GET"})
+    .then(function(waitData){
+
+    });
+};
+
+function runTablesQuery() {
+    $.ajax({url: "/api/tables", method: "GET"})
+    .then(function(tablesData){
+
+    });
+};
+
+// now run queries
+runTablesQuery();
+runWaitListQuery();
+
+</script>
 </body>
 </html>

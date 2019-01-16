@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reserve</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="jumbotron">
+                <h1 class="display-4 center-txt"><i class="fas fa-fire"></i> Hot Restaurant</h1>
+                <hr class="my-4">
+                <h3 class="center-txt">Current Reservations and Waiting List</h3>
+                <a class="btn btn-primary btn-lg center-btn" href="/tables" role="button"><i class="fa fa-list-alt"></i> View Tables</a>
+                <a class="btn btn-danger btn-lg center-btn" href="/reserve" role="button"><i class="far fa-credit-card"></i> Make Reservation</a>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header">Current Reservations</h5>
+                        <!-- Reservation items go here -->
+                        <div class="card-body" id="reservations">
+                            <h3 class="card-text"><span class="badge badge-primary">1</span> | testing</h3>
+                            <h3 class="card-text"><span class="badge badge-primary">2</span> | blah...</h3>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="number" class="form-control" id="name">      
+                          <label>Phone Number</label>
+                          <input type="number" class="form-control" id="number">
+                          <label>Email Address</label>
+                          <input type="email" class="form-control" id="email">
+                          
+                        </div>
+                    </form>
+            
+                    <div class="card">
+                        <h5 class="card-header">Wait List</h5>
+                        <!-- Wait list items go here -->
+                        <div class="card-body" id="wait-list">
+                            
+                        <div id="reservations"> </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist"></a>API Wait List</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
